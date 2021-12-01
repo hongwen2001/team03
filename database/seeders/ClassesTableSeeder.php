@@ -16,12 +16,13 @@ class ClassesTableSeeder extends Seeder
     {
         //
         DB::table('students')->insert([
-
-
-
-
-
-
-        ]);
+            'department'=>'文',
+            'classname'=>'A班',
+            'grade'=>1,
+            'classroom'=> 'C101',
+            'teacher'=>'羅慧君',
+            'created_at'=>'2001-12-13',
+            'updated_at'=>'2020-05-06',
+            ]);
     }
 }
