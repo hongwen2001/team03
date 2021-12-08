@@ -15,7 +15,7 @@ class StudentsTableSeeder extends Seeder
         郜黎薊薄印宿白懷　蒲邰從鄂索咸籍賴　卓藺屠蒙池喬陰鬱　胥能蒼雙聞莘党翟　譚貢勞逄姬申扶堵　冉宰酈雍郤璩桑桂　濮牛壽通邊扈燕翼　郟浦尚農溫別莊晏　柴瞿閻充慕連茹習
         　宦艾魚容向古易慎　戈廖庾終暨居衡步　都耿滿弘匡國文寇　廣祿闕東歐殳沃利　蔚越夔隆師鞏庫聶　晁勾敖融冷訾辛闞　那簡饒空曾毋沙乜　養鞠須豐巢關蒯相　查后荊紅游竺權逯　蓋益桓公万俟司馬　上官歐陽夏侯諸葛　聞人東方赫連皇甫　尉遲公羊澹臺公冶　宗政濮陽淳于單于　太叔申屠公孫仲孫　軒轅令狐鍾離宇文　長孫慕容鮮于閭丘　司徒司空丌官司寇　
         仉督子車顓孫端木　巫馬公西漆雕樂正　壤駟公良拓跋夾谷　宰父穀梁晉楚閆法　汝鄢涂欽段干百里　東郭南門呼延歸海　羊舌微生岳帥緱亢　況後有琴梁丘左丘　東門西門商牟佘佴　伯賞南宮墨哈譙笪　年愛陽佟第五言福　百家姓終";
-        $first_name=trim($first_name);
+        $first_name=preg_replace('/\s+/','',$first_name);
         $two_name="禚方雅考半凡北涵润天舒柯芳林钦风华钮晴丽锺芮欢求乐芸蒲添泥端懿屠叶农白棠华智念文梁以晴慕高澹绳以彤苑乐蕊红鸿光声艳蕊空文瑞苗芸
         馨波初南沐迎秋桂鸿运公巧云谏洮洮闭郁茂晓瑶隐弘济休依云邸雅美续瑜敏苍湛蓝关笑寒颛孙悦来康歌阑郁建茗公叔凌兰那拉小凝竭和泽阿清宁年念柏东方元凯
         释成龙邓飞英玄情刘怀岳北辰匡长岳魏勇任灵凡笪巍昂米智阳简从菡受思洁睢小蕊宗政从冬芮梅丰又菡能多思宿弘和项安平督丹彤丛玉环伦嘉怡伟听前半蕾逄一
@@ -23,9 +23,10 @@ class StudentsTableSeeder extends Seeder
         蕊辜山修晓灵赫志学敏浩然京柔洁闽凡桃拱禄卜鸿飞玉赞怡百意智门珠佩赖玉石达邈安荣姒曼青蹇灵萱潭季萌紫和平翟蓓斐翎富天青韩安娴函秋白强彭利白易偶
         梦全阳德素亦云干远航光冰洁唐博超公孙惜玉施悦欣辟盼波李鹏鲸荆懿轩道茹毛笑雯坚曼蔓漆雕正豪晋箫笛合访烟凭溶生驹查琼思虞木兰南门笑天曲叶飞敬黛娥
         廖彦慧邛婉然秦林楠沙平惠那天媛友迎夏堂彭勃伊俊晤母元绿程盈功壁平彭肖雅媚缑书撒梓琬武和种莺韵滑叶彤";
-        $first_name=str_split($first_name);
-        $two_name=str_split($two_name);
-        return $first_name[rand(0,$first_name.count()-1)].$two_name[rand(0,$two_name.count()-1)];
+
+        $first_name=preg_split('/(?<!^)(?!$)/u',$first_name);
+        $two_name=preg_split('/(?<!^)(?!$)/u',$two_name);
+        return $first_name[rand(0,count($first_name)-1)].$two_name[rand(0,count($two_name)-1)].$two_name[rand(0,count($two_name)-1)];
     }
     public function get_student_id(int $number,int $class_max){
         $english="ABCDEFGHIJKLMNOPQRXTUVWXYZ";
@@ -51,12 +52,12 @@ class StudentsTableSeeder extends Seeder
         return ($number%$class_max)+1;
     }
     public function get_graduation_data($number){
-        $graduation=2001;
+        $graduation=2001+(int)($number/60);
 
-        return [$graduation."-01-01 00:00:00",($graduation-3)."-01-01 00:00:00"];
+        return [$graduation."-01-01",($graduation-3)."-05-01"];
     }
     public function get_seat($row,$list,$person_number){
-        return ($person_number/$row).",".($person_number%$list);
+        return (int)($person_number/$row).",".($person_number%$list);
     }
     public function get_country(){
         $st_country=array("0"=>"台灣","1"=>"馬來西亞","2"=>"台灣","3"=>"台灣","4"=>"台灣","5"=>"台灣","6"=>"台灣","7"=>"台灣","8"=>"台灣","9"=>"台灣","10"=>"台灣");
@@ -71,19 +72,20 @@ class StudentsTableSeeder extends Seeder
     public function run()
     {
         //
+        $class_number=30;
         $person_number=100;
-        for ($i=0;i<$person_number;$i++) {
-            [$graduation_date,$start_date]=$this->get_graduation_data();
+        for ($i=0;$i<$person_number;$i++) {
+            [$graduation_date,$start_date]=$this->get_graduation_data($i);
             DB::table('students')->insert([
-                'student_id' => $this->get_student_id($i,30),
-                'seat_number' => $this->get_seat_number($i),
+                'student_id' => $this->get_student_id($i,$class_number),
+                'seat_number' => $this->get_seat_number($i,$class_number),
                 'name' => $this->get_name(),
                 'gender' => $this->get_gender(),
-                'cid' => $this->get_cid($i,30),
+                'cid' => $this->get_cid($i,$class_number),
                 'graduation_date' => $graduation_date,
                 'start_date' => $start_date,
-                'seat' => '2,0',
-                'country' => '馬來西亞'
+                'seat' => $this->get_seat(6,5,$i),
+                'country' => $this->get_country()
             ]);
         }
     }
