@@ -23,11 +23,28 @@ class StudentsTableSeeder extends Seeder
         蕊辜山修晓灵赫志学敏浩然京柔洁闽凡桃拱禄卜鸿飞玉赞怡百意智门珠佩赖玉石达邈安荣姒曼青蹇灵萱潭季萌紫和平翟蓓斐翎富天青韩安娴函秋白强彭利白易偶
         梦全阳德素亦云干远航光冰洁唐博超公孙惜玉施悦欣辟盼波李鹏鲸荆懿轩道茹毛笑雯坚曼蔓漆雕正豪晋箫笛合访烟凭溶生驹查琼思虞木兰南门笑天曲叶飞敬黛娥
         廖彦慧邛婉然秦林楠沙平惠那天媛友迎夏堂彭勃伊俊晤母元绿程盈功壁平彭肖雅媚缑书撒梓琬武和种莺韵滑叶彤";
-        $first_name=str_split($first_name,1);
-        $two_name=str_split($two_name,1);
-
+        $first_name=str_split($first_name);
+        $two_name=str_split($two_name);
+        return $first_name[rand(0,$first_name.count()-1)].$two_name[rand(0,$two_name.count()-1)];
     }
+    public function get_student_id(int $number,int $class_max){
+        $english="ABCDEFGHIJKLMNOPQRXTUVWXYZ";
+        $year=100;
+        $english=str_split($english);
+            $class_number=$number/$class_max;
+            $year+=$number/$year;
+            $id=$number%$class_max;
+            $student_id=$english[$class_number].$year.str_pad($id,4,STR_PAD_LEFT);
 
+        return $student_id;
+    }
+    public  function get_seat_number($number,$max){
+        $number=$number/$max;
+        return $number;
+    }
+    public function get_gender(){
+        $gender=array("0"=>"M")
+    }
     /**
      * Run the database seeds.
      *
