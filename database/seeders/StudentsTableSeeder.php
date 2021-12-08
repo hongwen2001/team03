@@ -43,8 +43,26 @@ class StudentsTableSeeder extends Seeder
         return $number;
     }
     public function get_gender(){
-        $gender=array("0"=>"M")
+        $gender=array("0"=>"M","1"=>"F");
+        return $gender[rand(0,1)];
     }
+    public function get_cid($number,$class_max){
+
+        return ($number%$class_max)+1;
+    }
+    public function get_graduation_data($number){
+        $graduation=2001;
+
+        return [$graduation."-01-01 00:00:00",($graduation-3)."-01-01 00:00:00"];
+    }
+    public function get_seat($row,$list,$person_number){
+        return ($person_number/$row).",".($person_number%$list);
+    }
+    public function get_country(){
+        $st_country=array("0"=>"台灣","1"=>"馬來西亞","2"=>"台灣","3"=>"台灣","4"=>"台灣","5"=>"台灣","6"=>"台灣","7"=>"台灣","8"=>"台灣","9"=>"台灣","10"=>"台灣");
+        return $st_country[rand(0,10)];
+    }
+
     /**
      * Run the database seeds.
      *
@@ -53,16 +71,20 @@ class StudentsTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('students')->insert([
-            'student_id'=>'S210001',
-            'seat_number'=>'1',
-            'name'=>'許有恆',
-            'gender'=> 'M',
-            'cid'=>1,
-            'graduation_date'=>'2001-12-13',
-            'start_date'=>'2020-05-06',
-            'seat'=>'2,0',
-            'country'=>'馬來西亞'
-        ]);
+        $person_number=100;
+        for ($i=0;i<$person_number;$i++) {
+            [$graduation_date,$start_date]=$this->get_graduation_data();
+            DB::table('students')->insert([
+                'student_id' => $this->get_student_id($i,30),
+                'seat_number' => $this->get_seat_number($i),
+                'name' => $this->get_name(),
+                'gender' => $this->get_gender(),
+                'cid' => $this->get_cid($i,30),
+                'graduation_date' => $graduation_date,
+                'start_date' => $start_date,
+                'seat' => '2,0',
+                'country' => '馬來西亞'
+            ]);
+        }
     }
 }
