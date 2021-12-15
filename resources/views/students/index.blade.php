@@ -12,7 +12,7 @@
     @foreach($students as $student)
         <tr>
             <td>{{$student->id}}</td>
-            <td>{{$student->stundent_id}}</td>
+            <td>{{$student->student_id}}</td>
             <td>{{$student->seat_number}}</td>
             <td>{{$student->name}}</td>
             <td><a href={{$student->id}}>詳細資料</a></td>
