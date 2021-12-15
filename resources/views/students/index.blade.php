@@ -7,7 +7,7 @@
         <td><b>學號</b></td>
         <td><b>座號</b></td>
         <td><b>姓名</b></td>
-        <td><b>更多</b></td>
+        <td><b>操作1</b></td>
     </tr>
     @foreach($students as $student)
         <tr>
@@ -15,7 +15,7 @@
             <td>{{$student->student_id}}</td>
             <td>{{$student->seat_number}}</td>
             <td>{{$student->name}}</td>
-            <td><a href={{$student->id}}>詳細資料</a></td>
+            <td><a href="students/{{$student->id}}">詳細資料</a></td>
 
         </tr>
     @endforeach

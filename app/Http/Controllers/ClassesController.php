@@ -50,7 +50,8 @@ class ClassesController extends Controller
     public function show($id)
     {
         //
-        return '你要查詢的班及編號   '.$id;
+
+        return '你要查詢的班及編號   ';
     }
 
     /**

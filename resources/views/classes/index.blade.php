@@ -7,7 +7,9 @@
         <td><b>系別</b></td>
         <td><b>班級名稱</b></td>
         <td><b>年級</b></td>
-        <td><b>更多</b></td>
+        <td><b>操作1</b></td>
+        <td><b>操作2</b></td>
+        <td><b>操作3</b></td>
 
     </tr>
     @foreach($students as $student)
@@ -17,6 +19,7 @@
             <td>{{$student->classname}}</td>
             <td>{{$student->grade}}</td>
             <td><a href={{$student->id}}>詳細資料</a></td>
+            <td><a href=>修改</a></td>
         </tr>
     @endforeach
 </table>

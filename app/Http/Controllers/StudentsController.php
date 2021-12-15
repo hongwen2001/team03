@@ -50,8 +50,8 @@ class StudentsController extends Controller
      */
     public function show($id)
     {
-        //
-        return '你要查詢的學生編號'.$id;
+        $student=Student::findOrFail($id);
+        return View('students.show')->with(['student'=>$student]);
     }
 
     /**

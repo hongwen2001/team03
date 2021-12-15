@@ -59,15 +59,17 @@ class StudentsTableSeeder extends Seeder
     }
     public function get_cid($number,$class_max){
 
-        return ($number%$class_max)+1;
+        return (int)($number/$class_max)+1;
     }
     public function get_graduation_data($number){
         $graduation=2001+(int)($number/60);
 
         return [$graduation."-01-01",($graduation-3)."-05-01"];
     }
-    public function get_seat($row,$list,$person_number){
-        return (int)($person_number/$list).",".($person_number%($list+1));
+    public function get_seat($list,$class_max,$person_number){
+        $ro=(($person_number%$class_max)%$list)+1;
+        $li=(int)($person_number%$class_max/$list)+1;
+        return $li.",".$ro;
     }
     public function get_country(){
         $st_country=array("0"=>"台灣","1"=>"馬來西亞","2"=>"台灣","3"=>"台灣","4"=>"台灣","5"=>"台灣","6"=>"台灣","7"=>"台灣","8"=>"台灣","9"=>"台灣","10"=>"台灣");
@@ -94,7 +96,7 @@ class StudentsTableSeeder extends Seeder
                 'cid' => $this->get_cid($i,$class_number),
                 'graduation_date' => $graduation_date,
                 'start_date' => $start_date,
-                'seat' => $this->get_seat(6,5,$i),
+                'seat' => $this->get_seat(5,$class_number,$i),
                 'country' => $this->get_country()
             ]);
         }
