@@ -40,6 +40,30 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         //
+        $student_id=$request->input('student_id');
+        $seat_number=$request->input('seat_number');
+        $name=$request->input('name');
+        $gender=$request->input('gender');
+        $cid=$request->input('cid');
+        $graduation_date=$request->input('graduation_date');
+        $start_date=$request->input('start_date');
+        $seat=$request->input('seat');
+        $country=$request->input('country');
+
+        Student::create([
+            'student_id' => $student_id,
+                'seat_number' => $seat_number,
+                'name' => $name,
+                'gender' => $gender,
+                'cid' => $cid,
+                'graduation_date' => $graduation_date,
+                'start_date' => $start_date,
+                'seat' => $seat,
+                'country' => $country
+
+        ]);
+        return redirect('students');
+
     }
 
     /**
@@ -63,6 +87,8 @@ class StudentsController extends Controller
     public function edit($id)
     {
         //
+        $student=Student::findOrFail($id);
+        return View('students.edit')->with(["student"=>$student]);
     }
 
     /**
@@ -75,6 +101,19 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $student=Student::findOrFail($id);
+        $student->student_id=$request->input('student_id');
+        $student->seat_number=$request->input('seat_number');
+        $student->name=$request->input('name');
+        $student->gender=$request->input('gender');
+        $student->cid=$request->input('cid');
+        $student->graduation_date=$request->input('graduation_date');
+        $student->start_date=$request->input('start_date');
+        $student->seat=$request->input('seat');
+        $student->country=$request->input('country');
+
+        $student->save();
+        return redirect('students');
     }
 
     /**
@@ -86,5 +125,8 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         //
+        $student=Student::findOrFail($id);
+        $student->delete();
+        return redirect('students');
     }
 }
