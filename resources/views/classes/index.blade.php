@@ -12,13 +12,13 @@
         <td><b>操作3</b></td>
 
     </tr>
-    @foreach($students as $student)
+    @foreach($classes as $class)
         <tr>
-            <td>{{$student->id}}</td>
-            <td>{{$student->department}}</td>
-            <td>{{$student->classname}}</td>
-            <td>{{$student->grade}}</td>
-            <td><a href={{$student->id}}>詳細資料</a></td>
+            <td>{{$class->id}}</td>
+            <td>{{$class->department}}</td>
+            <td>{{$class->classname}}</td>
+            <td>{{$class->grede}}</td>
+            <td><a href={{$class->id}}>詳細資料</a></td>
             <td><a href=>修改</a></td>
         </tr>
     @endforeach

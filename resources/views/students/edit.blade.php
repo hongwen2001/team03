@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <td><b>座號</b></td>
-        <td><input type="text" name="seat_number" value="{{$student->seat_number}}"></td>
+        <td><input type="number" name="seat_number" value="{{$student->seat_number}}"></td>
     </tr>
     <tr>
         <td><b>姓名</b></td>
@@ -21,7 +21,10 @@
     </tr>
     <tr>
         <td><b>性別</b></td>
-        <td><input type="text" name="gender" value="{{$student->gender}}"></td>
+        <td><select name="gender">
+                <option>F</option>
+                <option>M</option>
+            </select></td>
     </tr>
     <tr>
         <td><b>班級</b></td>
@@ -29,11 +32,11 @@
     </tr>
     <tr>
         <td><b>畢業年分</b></td>
-        <td><input type="text" name="graduation_date" value="{{$student->graduation_date}}"></td>
+        <td><input type="date" name="graduation_date" value="{{$student->graduation_date}}"></td>
     </tr>
     <tr>
         <td><b>入學年分</b></td>
-        <td><input type="text" name="start_date" value="{{$student->start_date}}"></td>
+        <td><input type="date" name="start_date" value="{{$student->start_date}}"></td>
     </tr>
     <tr>
         <td><b>座位</b></td>
