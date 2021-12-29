@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LHUClass;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -28,7 +29,8 @@ class StudentsController extends Controller
     public function create()
     {
         //
-        return View('students.create');
+        $classes=LHUClass::all();
+        return View('students.create')->with(['classes'=>$classes]);
     }
 
     /**

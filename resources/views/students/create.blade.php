@@ -23,7 +23,12 @@
         </tr>
         <tr>
             <td><b>班級</b></td>
-            <td><input type="text" name="cid"></td>
+            <td><select>
+                    @foreach($classes as $class)
+                    <option>{{$class->department.$class->grede.$class->classname}}</option>
+
+                    @endforeach
+                </select></td>
         </tr>
         <tr>
             <td><b>畢業年分</b></td>
