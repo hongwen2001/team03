@@ -9,4 +9,14 @@ class LHUClass extends Model
 {
     use HasFactory;
     protected $table="classes";
+    protected $fillable=[
+        'department',
+        'classname',
+        'grede',
+        'classroom',
+        'teacher'
+    ];
+    public function student(){
+        return $this->belongsTo('App\Models\Student','cid');
+    }
 }

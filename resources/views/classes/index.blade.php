@@ -21,7 +21,7 @@
             <td>{{$class->department}}</td>
             <td>{{$class->classname}}</td>
             <td>{{$class->grede}}</td>
-            <td><a href={{$class->id}}>詳細資料</a></td>
+            <td><a href="classes/{{$class->id}}">詳細資料</a></td>
             <td><a href="classes/{{$class->id}}/edit">修改</a></td>
             <td>
                 <form method="post" action="classes/{{$class->id}}">

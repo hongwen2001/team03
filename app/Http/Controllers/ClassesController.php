@@ -28,7 +28,7 @@ class ClassesController extends Controller
     public function create()
     {
         //
-        return LHUClass::all()->toArray();
+        return View('classes.create');
     }
 
     /**
@@ -40,6 +40,19 @@ class ClassesController extends Controller
     public function store(Request $request)
     {
         //
+        $department=$request->input('department');
+        $classname=$request->input('classname');
+        $grede=$request->input('grede');
+        $classroom=$request->input('classroom');
+        $teacher=$request->input('teacher');
+        LHUClass::create([
+            'department'=>$department,
+            'classname'=>$classname,
+            'grede'=>$grede,
+            'classroom'=>$classroom,
+            'teacher'=>$teacher
+        ]);
+        return redirect('classes');
     }
 
     /**
@@ -51,8 +64,8 @@ class ClassesController extends Controller
     public function show($id)
     {
         //
-
-        return '你要查詢的班及編號   ';
+        $class=LHUClass::findOrFail($id);
+        return View('classes.show')->with(['class'=>$class]);
     }
 
     /**
@@ -64,6 +77,9 @@ class ClassesController extends Controller
     public function edit($id)
     {
         //
+
+        $class=LHUClass::findOrFail($id);
+        return View('classes.edit')->with(['class'=>$class]);
     }
 
     /**
@@ -76,6 +92,15 @@ class ClassesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $class=LHUClass::findOrFail($id);
+        $class->department=$request->input('department');
+        $class->classname=$request->input('classname');
+        $class->grede=$request->input('grede');
+        $class->classroom=$request->input('classroom');
+        $class->teacher=$request->input('teacher');
+        $class->save();
+        return redirect('classes');
+
     }
 
     /**
@@ -87,5 +112,8 @@ class ClassesController extends Controller
     public function destroy($id)
     {
         //
+        $class=LHUClass::findOrFail($id);
+        $class->delete();
+        return redirect('classes');
     }
 }
