@@ -14,7 +14,7 @@ class CreateClassesTable extends Migration
     public function up()
     {
         Schema::create('classes', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unsigned()->comment('編號');
             $table->string('department')->comment('系別');
             $table->string('classname')->comment('班級名稱');
             $table->integer('grede')->comment('年級');

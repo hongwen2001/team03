@@ -10,6 +10,7 @@ class LHUClass extends Model
     use HasFactory;
     protected $table="classes";
     protected $fillable=[
+        'id',
         'department',
         'classname',
         'grede',
