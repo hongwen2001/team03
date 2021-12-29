@@ -17,6 +17,6 @@ class LHUClass extends Model
         'teacher'
     ];
     public function student(){
-        return $this->belongsTo('App\Models\Student','cid');
+        return $this->hasMany('App\Models\Student','cid');
     }
 }
