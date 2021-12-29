@@ -17,7 +17,7 @@ class ClassesController extends Controller
     {
         //
         $classes=LHUClass::all();
-        return View('classes.index').with(['classes'=>$classes,'whatdata'=>'所有班級']);
+        return View('classes.index')->with(['classes'=>$classes,'whatdata'=>'所有班級']);
     }
 
     /**
