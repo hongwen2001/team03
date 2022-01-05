@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LHUClass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ClassesController extends Controller
@@ -121,6 +122,8 @@ class ClassesController extends Controller
     }
     public function inquire_output(Request $request){
 
-        return View('classes.inquire_output');
+    }
+    public function students(Request $request){
+    LHUClass::with('students')->where();
     }
 }
