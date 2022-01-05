@@ -26,5 +26,7 @@
 
     </table>
     <input type="submit" value="確定"><input type="reset" value="重新整理">
+
 </form>
+
 </html>

@@ -116,4 +116,11 @@ class ClassesController extends Controller
         $class->delete();
         return redirect('classes');
     }
+    public function inquire_input(){
+        return View('classes.inquire_input');
+    }
+    public function inquire_output(Request $request){
+
+        return View('classes.inquire_output');
+    }
 }

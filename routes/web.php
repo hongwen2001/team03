@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('classes/inquire',['uses'=>'App\Http\Controllers\ClassesController@inquire_input','as'=>'classes.inquire_input']);
+Route::post('classes/inquire',['uses'=>'App\Http\Controllers\ClassesController@inquire_output','as'=>'classes.inquire_output']);
 Route::resource('students',StudentsController::class);
 Route::resource('classes',ClassesController::class);
