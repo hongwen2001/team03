@@ -1,4 +1,7 @@
-<html>
+@extends('classes.app')
+@section('head','請填寫資料')
+@section('title','建立學生資料')
+@section('body')
 <table border="1">
     <tr>
         <td><b>編號</b></td>
@@ -24,8 +27,36 @@
         <td><b>班導</b></td>
         <td>{{$class->teacher}}</td>
     </tr>
-
-
-
 </table>
-</html>
+<hr>
+<?php
+    $i=0;
+    $ii=0;
+?>
+@foreach($students['students'] as $student)
+
+        @if(($i%26)==0)
+            <table border="1" style="position: absolute;left: {{$ii*11}}%">
+                <tr>
+                    <td><b>編號</b></td>
+                    <td><b>學號</b></td>
+                    <td><b>座號</b></td>
+                    <td><b>姓名</b></td>
+                </tr>
+                    @endif
+                    <tr>
+                        <td>{{$student->id}}</td>
+                        <td>{{$student->student_id}}</td>
+                        <td>{{$student->seat_number}}</td>
+                        <td>{{$student->name}}</td>
+                    </tr>
+                <?php
+                        $i++;
+                        $ii=(int)($i/26);
+                ?>
+                @if(($i%26)==0)
+            </table>
+        @endif
+@endforeach
+
+@endsection

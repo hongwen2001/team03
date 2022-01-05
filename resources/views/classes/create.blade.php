@@ -1,4 +1,7 @@
-<html>
+@extends('classes.app')
+@section('head','請填寫資料')
+@section('title','建立學生資料')
+    @section('body')
 <form method="post" action="/classes">
     @csrf
     @method('post')
@@ -28,5 +31,5 @@
     <input type="submit" value="確定"><input type="reset" value="重新整理">
 
 </form>
+    @endsection
 
-</html>

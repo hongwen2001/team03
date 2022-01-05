@@ -66,7 +66,8 @@ class ClassesController extends Controller
     {
         //
         $class=LHUClass::findOrFail($id);
-        return View('classes.show')->with(['class'=>$class]);
+        $students=LHUClass::with('students')->find($id);
+        return View('classes.show')->with(['class'=>$class,'students'=>$students]);
     }
 
     /**

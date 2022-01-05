@@ -1,9 +1,9 @@
-<html>
+@extends('classes.app')
+@section('head','請填寫資料')
+@section('title','建立學生資料')
+@section('body')
 <title>班級資料</title>
 <body>{{$whatdata}}的資料</body>
-<form action="classes/create">
-    <input type="submit" value="新增資料"/>
-</form>
 <table border="1">
     <tr>
         <td><b>編號</b></td>
@@ -34,4 +34,4 @@
         </tr>
     @endforeach
 </table>
-</html>
+@endsection

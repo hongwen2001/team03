@@ -1,5 +1,15 @@
 <html>
-<table border="1">
+<?php
+    $number=0;
+?>
+
+@foreach($students as $student)
+    <?php
+    $i=($number%4)*25;
+    $ii=(int)($number/5);
+    ?>
+
+<table style="position: absolute;left: {{$i}}%;top: {{$ii}}*50px" border="1">
     <tr>
         <td><b>編號</b></td>
         <td>{{$student->id}}</td>
@@ -43,4 +53,6 @@
     </tr>
 
 </table>
+    <?php $number++?>
+@endforeach
 </html>

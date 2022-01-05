@@ -76,8 +76,8 @@ class StudentsController extends Controller
      */
     public function show($id)
     {
-        $student=Student::findOrFail($id);
-        return View('students.show')->with(['student'=>$student]);
+        $students=Student::findOrFail($id);
+        return View('students.show')->with(['students'=>[$students]]);
     }
 
     /**

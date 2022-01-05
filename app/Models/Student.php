@@ -20,6 +20,6 @@ class Student extends Model
         'country'
     ];
     public function class(){
-        return $this->belongsTo('App/Models/LHUClass','cid','id');
+        return $this->belongsTo('App/Models/LHUClass','cid');
     }
 }

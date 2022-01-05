@@ -18,7 +18,7 @@ class LHUClass extends Model
         'classroom',
         'teacher'
     ];
-    public function student(){
-        return $this->hasMany('App\Models\Student','cid');
+    public function students(){
+        return $this->hasMany('App\Models\Student','cid','id');
     }
 }
