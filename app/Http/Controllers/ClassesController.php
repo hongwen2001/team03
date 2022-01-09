@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\LHUClass;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 class ClassesController extends Controller
@@ -124,7 +126,42 @@ class ClassesController extends Controller
     public function inquire_output(Request $request){
 
     }
-    public function students(Request $request){
-    LHUClass::with('students')->where();
+
+    public function api_classes(){
+        return LHUClass::all();
     }
+    public function api_update(Request $request){
+        $id=DB::table('classes')->where([
+            ['department','=',$request->input('department')],
+            ['classname','=',$request->input('classname')],
+            ['grede','=',$request->input('grede')]])->value('id');
+
+        if ($id==null){
+            return response()->json(['status'=>0,]);
+        }
+        $original=$class=LHUClass::find($id);
+        $class->department=$request->input('department');
+        $class->classname=$request->input('classname');
+        $class->grede=$request->input('grede');
+        $class->classroom=$request->input('classroom');
+        $class->teacher=$request->input('teacher');
+        $class->save();
+        return response()->json(['status'=>1,'message'=>$original]);
+    }
+    public function api_delete(Request $request){
+        if (count(array($request))==1){
+            if (in_array($request->keys()['0'],Schema::getColumnListing('classes'))) {
+                $field_name=($request->keys())['0'];
+                $classes=DB::table('classes')->where($field_name,$request->$field_name)->get();
+                DB::table('classes')->where($field_name,$request->$field_name)->delete();
+            }else{
+                return '沒有這個項目';
+            }
+        }
+        else {
+            return '條件數量過多';
+        }
+        return (count($classes)<1)?'沒資料':$classes;
+    }
+
 }

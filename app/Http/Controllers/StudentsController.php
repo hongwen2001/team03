@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\LHUClass;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 class StudentsController extends Controller
@@ -130,5 +132,49 @@ class StudentsController extends Controller
         $student=Student::findOrFail($id);
         $student->delete();
         return redirect('students');
+    }
+    public function api_students(){
+        return Student::all();
+    }
+    public function api_update(Request $request){
+        $id=DB::table('students')->where('student_id',$request->input('student_id'))->value('id');
+
+        if ($id==null){
+            return response()->json(['status'=>0]);
+        }
+        $original_student=$student=Student::find($id);
+
+        $student->student_id=$request->input('student_id');
+
+        $student->seat_number=$request->input('seat_number');
+
+        $student->name=$request->input('name');
+
+        $student->gender=$request->input('gender');
+        $student->cid=$request->input('cid');
+        $student->graduation_date=$request->input('graduation_date');
+        $student->start_date=$request->input('start_date');
+        $student->seat=$request->input('seat');
+        $student->country=$request->input('country');
+        if ($student->save()) {
+            return response()->json(['status' => 1, 'message' => $original_student]);
+        }else{
+            return response()->json(['status'=>0]);
+        }
+    }
+    public function api_delete(Request $request){
+        if (count(array($request))==1){
+            if (in_array($request->keys()['0'],Schema::getColumnListing('students'))) {
+                $field_name=($request->keys())['0'];
+                $students=DB::table('students')->where($field_name,$request->$field_name)->get();
+                DB::table('students')->where($field_name,$request->$field_name)->delete();
+            }else{
+                return '沒有這個項目';
+            }
+        }
+        else {
+            return '條件數量過多';
+        }
+        return $students;
     }
 }

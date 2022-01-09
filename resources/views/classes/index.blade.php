@@ -1,10 +1,9 @@
 @extends('classes.app')
-@section('head','請填寫資料')
-@section('title','建立學生資料')
+@section('head','所有班級資料')
+@section('title','所有班級資料')
 @section('body')
-<title>班級資料</title>
-<body>{{$whatdata}}的資料</body>
-<table border="1">
+
+<table border="1" style="position: absolute;left: 50% ;top:20%;transform: translate(-50%,-0%)">
     <tr>
         <td><b>編號</b></td>
         <td><b>系別</b></td>

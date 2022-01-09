@@ -1,11 +1,11 @@
 @extends('classes.app')
-@section('head','請填寫資料')
-@section('title','建立學生資料')
-    @section('body')
+@section('head','建立班級資料')
+@section('title','建立班級資料')
+@section('body')
 <form method="post" action="/classes">
     @csrf
     @method('post')
-    <table border="1">
+    <table border="1" style="position: absolute;left: 50% ;top:20%;transform: translate(-50%,-0%)">
         <tr>
             <td><b>系別</b></td>
             <td><input type="text" name="department"></td>
@@ -26,9 +26,13 @@
             <td><b>班導</b></td>
             <td><input type="text" name="teacher"></td>
         </tr>
-
+        <tr>
+            <td><input type="submit" value="確定"></td>
+            <td><input type="reset" value="重新整理">
+            </td>
+        </tr>
     </table>
-    <input type="submit" value="確定"><input type="reset" value="重新整理">
+
 
 </form>
     @endsection

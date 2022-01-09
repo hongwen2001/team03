@@ -1,7 +1,8 @@
 @extends('classes.app')
-@section('head','請填寫資料')
-@section('title','建立學生資料')
+@section('head','詳細班級資料')
+@section('title','詳細班級資料')
 @section('body')
+    <div style="position: absolute;left: 50%;top: 20% ;transform: translate(-50%,-0%)">
 <table border="1">
     <tr>
         <td><b>編號</b></td>
@@ -28,15 +29,16 @@
         <td>{{$class->teacher}}</td>
     </tr>
 </table>
-<hr>
+    </div>
+
 <?php
     $i=0;
     $ii=0;
 ?>
 @foreach($students['students'] as $student)
 
-        @if(($i%26)==0)
-            <table border="1" style="position: absolute;left: {{$ii*11}}%">
+        @if(($i%19)==0)
+            <table border="1" style="position: absolute;left: {{((100-ceil(count($students['students'])/19)*11)/2+$ii*16)}}%;top: 40%">
                 <tr>
                     <td><b>編號</b></td>
                     <td><b>學號</b></td>
@@ -52,9 +54,9 @@
                     </tr>
                 <?php
                         $i++;
-                        $ii=(int)($i/26);
+                        $ii=(int)($i/19);
                 ?>
-                @if(($i%26)==0)
+                @if(($i%19)==0)
             </table>
         @endif
 @endforeach

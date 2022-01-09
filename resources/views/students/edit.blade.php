@@ -1,8 +1,11 @@
-<html>
+@extends('students.app')
+@section('head','更改學生資料')
+@section('title','更改學生資料')
+@section('body')
 <form method="post" action="/students/{{$student->id}}">
     @csrf
     @method('put')
-<table border="1">
+<table border="1" style="position: absolute;left: 50% ;top:20%;transform: translate(-50%,-0%)">
     <tr>
         <td><b>編號</b></td>
         <td>{{$student->id}}</td>
@@ -47,8 +50,16 @@
         <td><b>出生地</b></td>
         <td><input type="text" name="country" value="{{$student->country}}"></td>
     </tr>
+    <tr>
+        <td>
+            <input type="submit" value="確定">
+        </td>
+        <td>
+            <input type="reset" value="重新整理">
+        </td>
 
+    </tr>
 </table>
-    <input type="submit" value="確定"><input type="reset" value="重新整理">
 </form>
-</html>
+
+@endsection

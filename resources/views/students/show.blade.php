@@ -1,4 +1,7 @@
-<html>
+@extends('students.app')
+@section('head','詳細班級資料')
+@section('title','詳細班級資料')
+@section('body')
 <?php
     $number=0;
 ?>
@@ -55,4 +58,4 @@
 </table>
     <?php $number++?>
 @endforeach
-</html>
+
