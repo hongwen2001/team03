@@ -12,7 +12,7 @@
     $ii=(int)($number/5);
     ?>
 
-<table style="position: absolute;left: {{$i}}%;top: {{$ii}}*50px" border="1">
+<table style="position: absolute;left: {{$i}}%;top: {{$ii}}*50px" bgcolor="white" border="1">
     <tr>
         <td><b>編號</b></td>
         <td>{{$student->id}}</td>
@@ -58,4 +58,4 @@
 </table>
     <?php $number++?>
 @endforeach
-
+@endsection

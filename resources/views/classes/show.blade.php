@@ -2,10 +2,10 @@
 @section('head','詳細班級資料')
 @section('title','詳細班級資料')
 @section('body')
-    <div style="position: absolute;left: 50%;top: 20% ;transform: translate(-50%,-0%)">
-<table border="1">
+    <div>
+<table border="3" bgcolor="white" style="border: 2px #718096 solid;width: 31.3%;line-height: 200%">
     <tr>
-        <td><b>編號</b></td>
+        <td style="width: 20%"><b>編號</b></td>
         <td>{{$class->id}}</td>
     </tr>
     <tr>
@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td><b>年級</b></td>
-        <td>{{$class->grede}}</td>
+        <td>{{$class->grade}}</td>
     </tr>
     <tr>
         <td><b>教室</b></td>
@@ -30,15 +30,15 @@
     </tr>
 </table>
     </div>
-
+<div style="width: 100%;height: 100%;padding-top: 1%">
 <?php
     $i=0;
     $ii=0;
 ?>
 @foreach($students['students'] as $student)
 
-        @if(($i%19)==0)
-            <table border="1" style="position: absolute;left: {{((100-ceil(count($students['students'])/19)*11)/2+$ii*16)}}%;top: 40%">
+        @if(($i%$allstudent)==0)
+            <table border="1" bgcolor="white" style="border: 3px #2d3748 solid;position: absolute;left: {{((int)($i/$allstudent))*17}}%;width: 17%">
                 <tr>
                     <td><b>編號</b></td>
                     <td><b>學號</b></td>
@@ -54,11 +54,10 @@
                     </tr>
                 <?php
                         $i++;
-                        $ii=(int)($i/19);
                 ?>
-                @if(($i%19)==0)
+                @if(($i%$allstudent)==0)
             </table>
         @endif
 @endforeach
-
+</div>
 @endsection

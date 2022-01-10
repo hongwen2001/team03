@@ -17,7 +17,7 @@ class CreateClassesTable extends Migration
             $table->id()->unsigned()->comment('編號');
             $table->string('department')->comment('系別');
             $table->string('classname')->comment('班級名稱');
-            $table->integer('grede')->comment('年級');
+            $table->integer('grade')->comment('年級');
             $table->string('classroom')->comment('教室');
             $table->string('teacher')->comment('班導');
             $table->timestamps();

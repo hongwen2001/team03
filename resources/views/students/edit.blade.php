@@ -5,7 +5,7 @@
 <form method="post" action="/students/{{$student->id}}">
     @csrf
     @method('put')
-<table border="1" style="position: absolute;left: 50% ;top:20%;transform: translate(-50%,-0%)">
+<table border="1" bgcolor="white" style="position: absolute">
     <tr>
         <td><b>編號</b></td>
         <td>{{$student->id}}</td>
@@ -24,14 +24,25 @@
     </tr>
     <tr>
         <td><b>性別</b></td>
-        <td><select name="gender">
-                <option>F</option>
-                <option>M</option>
-            </select></td>
+        <td>
+            @if($student->gender=='F')
+            <label for="F">F</label><input type="radio" id="F" name="grade" value="F" checked>
+            <label for="M">M</label><input type="radio" id="M" name="grade" value="M" >
+            @else
+                <label for="F">F</label><input type="radio" id="F" name="grade" value="F" >
+                <label for="M">M</label><input type="radio" id="M" name="grade" value="M" checked>
+            @endif
+
+        </td>
     </tr>
     <tr>
         <td><b>班級</b></td>
-        <td><input type="text" name="cid" value="{{$student->cid}}"></td>
+        <td><select>
+                @foreach($classes as $class)
+                    <option>{{$class->department.$class->grade.$class->classname}}</option>
+
+                @endforeach
+            </select></td>
     </tr>
     <tr>
         <td><b>畢業年分</b></td>

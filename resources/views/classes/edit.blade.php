@@ -5,7 +5,7 @@
 <form method="post" action="/classes/{{$class->id}}">
     @csrf
     @method('put')
-    <table border="1" style="position: absolute;left: 50% ;top:20%;transform: translate(-50%,-0%)">
+    <table border="1" bgcolor="white" style="position: absolute;top:0%;">
         <tr>
             <td><b>編號</b></td>
             <td>{{$class->id}}</td>
@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td><b>年級</b></td>
-            <td><input type="text" name="grede" value="{{$class->grede}}"></td>
+            <td><input type="text" name="grade" value="{{$class->grade}}"></td>
         </tr>
         <tr>
             <td><b>教室</b></td>

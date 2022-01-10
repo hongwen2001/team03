@@ -19,7 +19,7 @@ class ClassesTableSeeder extends Seeder
 
         return $english[$i%$classname_number];
     }
-    public function get_grede($i,$dep_number){
+    public function get_grade($i,$dep_number){
         return (int)($i/$dep_number)+1;
     }
     public function get_classroom($i,$classroom_number,$dep_number,$total){
@@ -66,7 +66,7 @@ class ClassesTableSeeder extends Seeder
         $total_classnumber=18;
         $dep_totoalnumber=3;
         $dep_number=(int)($total_classnumber/3)/$dep_totoalnumber;
-        $grede_number=(int)($total_classnumber/3);
+        $grade_number=(int)($total_classnumber/3);
         $classroom_number=4;
 
 
@@ -74,7 +74,7 @@ class ClassesTableSeeder extends Seeder
             DB::table('classes')->insert([
                 'department' => $this->get_department($i,$dep_number,$total_classnumber/$dep_totoalnumber),
                 'classname'=>$this->get_classname($i,$dep_number),
-                'grede'=>$this->get_grede($i,$grede_number),
+                'grade'=>$this->get_grade($i,$grade_number),
                 'classroom'=>$this->get_classroom($i,$classroom_number,$dep_number,$total_classnumber/$dep_totoalnumber),
                 'teacher'=>$this->get_teacher()
             ]);

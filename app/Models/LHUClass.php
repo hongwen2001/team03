@@ -12,8 +12,9 @@ class LHUClass extends Model
     protected $table="classes";
     protected $fillable=[
         'id',
+        'department',
         'classname',
-        'grede',
+        'grade',
         'classroom',
         'teacher'
     ];

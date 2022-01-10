@@ -20,7 +20,7 @@ class ClassesController extends Controller
     {
         //
         $classes=LHUClass::all();
-        return View('classes.index')->with(['classes'=>$classes,'whatdata'=>'所有班級']);
+        return View('classes.index')->with(['classes'=>$classes]);
     }
 
     /**
@@ -42,16 +42,16 @@ class ClassesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //\
         $department=$request->input('department');
         $classname=$request->input('classname');
-        $grede=$request->input('grede');
+        $grade=$request->input('grade');
         $classroom=$request->input('classroom');
         $teacher=$request->input('teacher');
         LHUClass::create([
             'department'=>$department,
             'classname'=>$classname,
-            'grede'=>$grede,
+            'grade'=>$grade,
             'classroom'=>$classroom,
             'teacher'=>$teacher
         ]);
@@ -69,7 +69,10 @@ class ClassesController extends Controller
         //
         $class=LHUClass::findOrFail($id);
         $students=LHUClass::with('students')->find($id);
-        return View('classes.show')->with(['class'=>$class,'students'=>$students]);
+        return View('classes.show')->with([
+            'class'=>$class,
+            'students'=>$students,
+            'allstudent'=>ceil(count($students['students']->toArray())/2)]);
     }
 
     /**
@@ -99,7 +102,7 @@ class ClassesController extends Controller
         $class=LHUClass::findOrFail($id);
         $class->department=$request->input('department');
         $class->classname=$request->input('classname');
-        $class->grede=$request->input('grede');
+        $class->grade=$request->input('grade');
         $class->classroom=$request->input('classroom');
         $class->teacher=$request->input('teacher');
         $class->save();
@@ -120,11 +123,10 @@ class ClassesController extends Controller
         $class->delete();
         return redirect('classes');
     }
-    public function inquire_input(){
-        return View('classes.inquire_input');
-    }
-    public function inquire_output(Request $request){
 
+    public function grade_query(Request $request){
+        $classes=DB::table('classes')->where('grade',$request->grade)->get();
+        return View('classes.grade_query')->with(['classes'=>$classes]);
     }
 
     public function api_classes(){
@@ -134,7 +136,7 @@ class ClassesController extends Controller
         $id=DB::table('classes')->where([
             ['department','=',$request->input('department')],
             ['classname','=',$request->input('classname')],
-            ['grede','=',$request->input('grede')]])->value('id');
+            ['grade','=',$request->input('grade')]])->value('id');
 
         if ($id==null){
             return response()->json(['status'=>0,]);
@@ -142,7 +144,7 @@ class ClassesController extends Controller
         $original=$class=LHUClass::find($id);
         $class->department=$request->input('department');
         $class->classname=$request->input('classname');
-        $class->grede=$request->input('grede');
+        $class->grade=$request->input('grade');
         $class->classroom=$request->input('classroom');
         $class->teacher=$request->input('teacher');
         $class->save();

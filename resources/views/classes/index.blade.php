@@ -3,7 +3,7 @@
 @section('title','所有班級資料')
 @section('body')
 
-<table border="1" style="position: absolute;left: 50% ;top:20%;transform: translate(-50%,-0%)">
+<table border="1" bgcolor="white">
     <tr>
         <td><b>編號</b></td>
         <td><b>系別</b></td>
@@ -19,7 +19,7 @@
             <td>{{$class->id}}</td>
             <td>{{$class->department}}</td>
             <td>{{$class->classname}}</td>
-            <td>{{$class->grede}}</td>
+            <td>{{$class->grade}}</td>
             <td><a href="classes/{{$class->id}}">詳細資料</a></td>
             <td><a href="classes/{{$class->id}}/edit">修改</a></td>
             <td>

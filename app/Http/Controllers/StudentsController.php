@@ -44,11 +44,12 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         //
+
         $student_id=$request->input('student_id');
         $seat_number=$request->input('seat_number');
         $name=$request->input('name');
         $gender=$request->input('gender');
-        $cid=$request->input('cid');
+        $cid=(int)($request->input('cid'));
         $graduation_date=$request->input('graduation_date');
         $start_date=$request->input('start_date');
         $seat=$request->input('seat');
@@ -66,6 +67,7 @@ class StudentsController extends Controller
                 'country' => $country
 
         ]);
+
         return redirect('students');
 
     }
@@ -91,8 +93,9 @@ class StudentsController extends Controller
     public function edit($id)
     {
         //
+        $classes=LHUClass::all();
         $student=Student::findOrFail($id);
-        return View('students.edit')->with(["student"=>$student]);
+        return View('students.edit')->with(["student"=>$student,'classes'=>$classes]);
     }
 
     /**

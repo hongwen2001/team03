@@ -5,7 +5,7 @@
 <form method="post" action="/classes">
     @csrf
     @method('post')
-    <table border="1" style="position: absolute;left: 50% ;top:20%;transform: translate(-50%,-0%)">
+    <table border="1" bgcolor="white" style=" line-height: 150%" >
         <tr>
             <td><b>系別</b></td>
             <td><input type="text" name="department"></td>
@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <td><b>年級</b></td>
-            <td><input type="text" name="grede"></td>
+            <td><input type="text" name="grade"></td>
         </tr>
         <tr>
             <td><b>教室</b></td>
