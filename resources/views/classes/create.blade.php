@@ -16,7 +16,11 @@
         </tr>
         <tr>
             <td><b>年級</b></td>
-            <td><input type="text" name="grade"></td>
+            <td>
+                <label for="1">1</label><input id="1" type="radio" value="1" name="grade" checked>
+                <label for="2">2</label><input id="2" type="radio" value="2" name="grade">
+                <label for="3">3</label><input id="3" type="radio" value="3" name="grade">
+            </td>
         </tr>
         <tr>
             <td><b>教室</b></td>
