@@ -85,7 +85,7 @@ class StudentsTableSeeder extends Seeder
     {
         //
         $class_number=30;
-        $person_number=100;
+        $person_number=400;
         for ($i=0;$i<$person_number;$i++) {
             [$graduation_date,$start_date]=$this->get_graduation_data($i);
             DB::table('students')->insert([

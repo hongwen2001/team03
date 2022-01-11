@@ -137,11 +137,7 @@ class StudentsController extends Controller
         return redirect('students');
     }
     public function grade_query(Request $request){
-        $classes=DB::table('classes')->where('grade',$request->grade)->get();
-        foreach ($classes as $class) {
-            $students[] = LHUClass::with('students')->find($class->id);
-        }
-
+        $students=LHUClass::grade_students($request->grade);
         return View('students.grade_query')->with(['students'=>$students,'grade'=>$request->grade]);
     }
     public function api_students(){

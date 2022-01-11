@@ -1,4 +1,4 @@
-@extends('classes.app')
+@extends('students.app')
 @section('head',$grade.'年級所有學生')
 @section('title',$grade.'建立班級資料')
 @section('body')

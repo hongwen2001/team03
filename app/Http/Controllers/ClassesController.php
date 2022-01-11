@@ -125,7 +125,7 @@ class ClassesController extends Controller
     }
 
     public function grade_query(Request $request){
-        $classes=DB::table('classes')->where('grade',$request->grade)->get();
+        $classes=LHUClass::grade_class($request->grade)->get();
         return View('classes.grade_query')->with(['classes'=>$classes,'grade'=>$request->grade]);
     }
 

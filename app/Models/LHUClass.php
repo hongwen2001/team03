@@ -21,4 +21,15 @@ class LHUClass extends Model
     public function students(){
         return $this->hasMany('App\Models\Student','cid','id');
     }
+    public function scopeGrade_class($query,$grade){
+        return $query->where('grade',$grade);
+    }
+    public function scopeGrade_students($query,$grade){
+        $students=array();
+        $classes=$query->where('grade',$grade)->get();
+        foreach ($classes as $class) {
+            $students[] = LHUClass::with('students')->find($class->id);
+        }
+        return $students;
+    }
 }

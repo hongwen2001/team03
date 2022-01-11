@@ -26,20 +26,20 @@
         <td><b>性別</b></td>
         <td>
             @if($student->gender=='F')
-            <label for="F">F</label><input type="radio" id="F" name="grade" value="F" checked>
-            <label for="M">M</label><input type="radio" id="M" name="grade" value="M" >
+            <label for="F">F</label><input type="radio" id="F" name="gender" value="F" checked>
+            <label for="M">M</label><input type="radio" id="M" name="gender" value="M" >
             @else
-                <label for="F">F</label><input type="radio" id="F" name="grade" value="F" >
-                <label for="M">M</label><input type="radio" id="M" name="grade" value="M" checked>
+                <label for="F">F</label><input type="radio" id="F" name="gender" value="F" >
+                <label for="M">M</label><input type="radio" id="M" name="gender" value="M" checked>
             @endif
 
         </td>
     </tr>
     <tr>
         <td><b>班級</b></td>
-        <td><select>
+        <td><select name="cid">
                 @foreach($classes as $class)
-                    <option>{{$class->department.$class->grade.$class->classname}}</option>
+                    <option value="{{$class->id}}">{{$class->department.$class->grade.$class->classname}}</option>
 
                 @endforeach
             </select></td>
