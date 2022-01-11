@@ -136,6 +136,14 @@ class StudentsController extends Controller
         $student->delete();
         return redirect('students');
     }
+    public function grade_query(Request $request){
+        $classes=DB::table('classes')->where('grade',$request->grade)->get();
+        foreach ($classes as $class) {
+            $students[] = LHUClass::with('students')->find($class->id);
+        }
+
+        return View('students.grade_query')->with(['students'=>$students,'grade'=>$request->grade]);
+    }
     public function api_students(){
         return Student::all();
     }

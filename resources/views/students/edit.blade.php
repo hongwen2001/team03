@@ -5,7 +5,7 @@
 <form method="post" action="/students/{{$student->id}}">
     @csrf
     @method('put')
-<table border="1" bgcolor="white" style="position: absolute">
+<table border="1" bgcolor="white"  style="line-height: 150%">
     <tr>
         <td><b>編號</b></td>
         <td>{{$student->id}}</td>

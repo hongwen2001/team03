@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('classes/grade_query',['uses'=>'App\Http\Controllers\ClassesController@grade_query','as'=>'classes.grade_query']);
+Route::get('students/grade_query',['uses'=>'App\Http\Controllers\StudentsController@grade_query','as'=>'students.grade_query']);
 Route::resource('students',StudentsController::class);
 Route::resource('classes',ClassesController::class);
