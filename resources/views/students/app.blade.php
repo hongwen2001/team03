@@ -20,6 +20,14 @@
             <input type="submit" value="確定">
         </form>
     </div>
+    <div style="position: absolute ; top: 76%;width: 20%;height: 20%;left: 11%">
+        <form method="get" action="/students/name_query">
+            <label style="background-color: rgba(255 ,228 ,196,0.9)">依名字查詢:</label>
+            <input type="text" name="name">
+            <input type="submit" value="確定">
+        </form>
+    </div>
+
     <div style="width: 15%;height: 75%">
         <table style="position: relative ;width: 100%;height: 90%;top: 5%">
             <tr style="height: 100%;width: 100%">

@@ -184,4 +184,8 @@ class StudentsController extends Controller
         }
         return $students;
     }
+    public function name_query(Request $request){
+        $students =Student::name_query($request->name)->get();
+        return View('students.name_query')->with(['students'=>$students]);
+    }
 }
