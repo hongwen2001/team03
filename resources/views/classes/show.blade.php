@@ -31,6 +31,8 @@
 </table>
     </div>
 <div style="width: 100%;height: 100%;padding-top: 1%">
+    <table border="0">
+        <tr>
 <?php
     $i=0;
     $ii=0;
@@ -38,7 +40,8 @@
 @foreach($students['students'] as $student)
 
         @if(($i%$allstudent)==0)
-            <table border="1" bgcolor="white" style="border: 3px #2d3748 solid;position: absolute;left: {{((int)($i/$allstudent))*17}}%;width: 17%">
+            <td >
+            <table border="1" bgcolor="white" style="border: 3px #2d3748 solid">
                 <tr>
                     <td><b>編號</b></td>
                     <td><b>學號</b></td>
@@ -57,7 +60,10 @@
                 ?>
                 @if(($i%$allstudent)==0)
             </table>
+            </td>
         @endif
 @endforeach
+        </tr>
+    </table>
 </div>
 @endsection

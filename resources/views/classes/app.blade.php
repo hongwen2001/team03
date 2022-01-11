@@ -49,9 +49,9 @@
 @section('body')
 
 @show
-<div style="position: absolute;margin-top: 5%;width: 100%;left: 0%">
-    @include('footer')
-</div>
+    <div style="position: absolute;margin-top: 5%;width: 100%;left: 0%">
+        @include('footer')
+    </div>
 </div>
 </body>
 </html>

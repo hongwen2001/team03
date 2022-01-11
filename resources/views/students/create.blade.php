@@ -34,11 +34,11 @@
         </tr>
         <tr>
             <td><b>畢業年分</b></td>
-            <td><input type="text" name="graduation_date"></td>
+            <td><input type="date" name="graduation_date"></td>
         </tr>
         <tr>
             <td><b>入學年分</b></td>
-            <td><input type="text" name="start_date"></td>
+            <td><input type="date" name="start_date"></td>
         </tr>
         <tr>
             <td><b>座位</b></td>
