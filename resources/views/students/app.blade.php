@@ -9,8 +9,8 @@
 </div>
 <body style="background: rgba(175,238,238,0.5);background-size: contain">
 <div style="position: absolute;width: 100%;top: 13%;height: 13%;left: 0%;background-color: rgba(154 ,255 ,154,0.6)">
-    <div style="position: absolute ; top: 76%;width: 20%;height: 20%">
-        <form method="get" action="/students/grade_query">
+    <div style="position: absolute ; top: 76%;width: 15%;height: 20%">
+        <form method="get" action="/students/grade_query" style="width: 100%">
             <label style="background-color: rgba(255 ,228 ,196,0.9)">依年級查詢:</label>
             <select name="grade">
                 <option value="1">1年級</option>
@@ -20,10 +20,10 @@
             <input type="submit" value="確定">
         </form>
     </div>
-    <div style="position: absolute ; top: 76%;width: 20%;height: 20%;left: 11%">
-        <form method="get" action="/students/name_query">
+    <div style="position: absolute ; top: 76%;width: 20%;height: 20%;left: 15%">
+        <form method="get" action="/students/name_query" style="width: 100%">
             <label style="background-color: rgba(255 ,228 ,196,0.9)">依名字查詢:</label>
-            <input type="text" name="name">
+            <input type="text" name="name" style="width: 30%">
             <input type="submit" value="確定">
         </form>
     </div>

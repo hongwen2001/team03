@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/',function (){
+    return redirect('students');
+});
 Route::get('classes/grade_query',['uses'=>'App\Http\Controllers\ClassesController@grade_query','as'=>'classes.grade_query']);
 Route::get('students/grade_query',['uses'=>'App\Http\Controllers\StudentsController@grade_query','as'=>'students.grade_query']);
 Route::get('students/name_query',['uses'=>'App\Http\Controllers\StudentsController@name_query','as'=>'students.name_query']);
